@@ -2,6 +2,7 @@ package ru.example.icorpvoiceassistent
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +22,9 @@ class MainActivity : AppCompatActivity() {
         age++
 
         val summary: String = "name: $name surname: $surname age: $age "
+
+        val output: TextView = findViewById(R.id.output)
+        output.text = summary
 
 
     }
