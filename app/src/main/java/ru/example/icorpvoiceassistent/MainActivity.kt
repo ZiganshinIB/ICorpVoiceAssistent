@@ -8,6 +8,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val name: String = "Ziganshin"
+        val surname: String = "Ilmir"
+        var age: Int = 23
+        var height: Double = 178.0
+
+        age = 27
+        age = 22
+
+        age = age+1
+        age += 1
+        age++
+
+        val summary: String = "name: $name surname: $surname age: $age "
+
 
     }
 }
