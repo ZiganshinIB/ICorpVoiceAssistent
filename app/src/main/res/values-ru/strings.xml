@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Голосарик</string>
     <!-- For button name is key, "Stop" is value. -->
-    <string name="action_stop">Стоп</string>
-    <string name="action_clear">Очистить</string>
+    <string name="action_stop_title">Стоп</string>
+    <string name="action_clear_title">Очистить</string>
 
     <string name="request_hint">Что вы ищете?</string>
 

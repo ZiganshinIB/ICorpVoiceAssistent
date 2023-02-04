@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">ICorpVoice</string>
     <!-- For button name is key, "Stop" is value. -->
-    <string name="action_stop">Stop</string>
-    <string name="action_clear">Clear</string>
+    <string name="action_stop_title">Stop</string>
+    <string name="action_clear_title">Clear</string>
 
     <string name="request_hint">What are you interested in?</string>
 
