@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Голосарик</string>
+    <!-- For button name is key, "Stop" is value. -->
+    <string name="action_stop">Стоп</string>
+    <string name="action_clear">Очистить</string>
+
+    <string name="request_hint">Что вы ищете?</string>
+
+    <string name="error_do_not_understand">Я не понял. Повтори?</string>
+    <string name="error_voice_recognition_unavailable">Распознование голоса не доступно</string>
+    <string name="error_something_went_wrong">Что-то пошло не так</string>
+    <string name="error_tts_is_not_ready">TTS недоступен</string>
+</resources>
