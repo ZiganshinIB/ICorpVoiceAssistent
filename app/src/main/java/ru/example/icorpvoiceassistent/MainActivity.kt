@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Adapter
+import android.widget.ListView
 import android.widget.SimpleAdapter
 import android.widget.TextView
 import com.google.android.material.appbar.MaterialToolbar
@@ -45,7 +46,20 @@ class MainActivity : AppCompatActivity() {
     fun initViews(){
         val toolbar: MaterialToolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
+
+        requestInput = findViewById(R.id.text_input_edit)
+
+        val podsList: ListView = findViewById(R.id.pods_list)
+        podsAdapter = SimpleAdapter(
+            applicationContext,
+            pods,
+            R.layout.item_pod,
+            arrayOf("Title", "Content"),
+            intArrayOf(R.id.title, R.id.content)
+        )
+        podsList.adapter = podsAdapter
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.toolbar_menu, menu)
