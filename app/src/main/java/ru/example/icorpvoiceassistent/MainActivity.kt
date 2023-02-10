@@ -11,6 +11,7 @@ import android.widget.ListView
 import android.widget.SimpleAdapter
 import android.widget.TextView
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 
 class MainActivity : AppCompatActivity() {
@@ -58,6 +59,11 @@ class MainActivity : AppCompatActivity() {
             intArrayOf(R.id.title, R.id.content)
         )
         podsList.adapter = podsAdapter
+
+        val voiceInputButton: FloatingActionButton = findViewById(R.id.voice_input_button)
+        voiceInputButton.setOnClickListener {
+            Log.d(TAG, "FAB")
+        }
     }
 
 
