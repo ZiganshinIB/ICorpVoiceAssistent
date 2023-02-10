@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Adapter
 import android.widget.ListView
+import android.widget.ProgressBar
 import android.widget.SimpleAdapter
 import android.widget.TextView
 import com.google.android.material.appbar.MaterialToolbar
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     val TAG: String = "MainActivity"
     lateinit var requestInput: TextInputEditText
     lateinit var podsAdapter: SimpleAdapter
+    lateinit var progressBar: ProgressBar
 
     val pods = mutableListOf<HashMap<String, String>>(
         HashMap<String,String>().apply {
@@ -64,6 +66,8 @@ class MainActivity : AppCompatActivity() {
         voiceInputButton.setOnClickListener {
             Log.d(TAG, "FAB")
         }
+
+        progressBar = findViewById(R.id.progress_bar)
     }
 
 
