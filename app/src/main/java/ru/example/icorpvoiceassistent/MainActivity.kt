@@ -90,7 +90,9 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
             R.id.action_clear -> {
-                Log.d(TAG, "action_clear")
+                requestInput.text?.clear()
+                pods.clear()
+                podsAdapter.notifyDataSetChanged()
                 return true
             }
         }
@@ -151,7 +153,7 @@ class MainActivity : AppCompatActivity() {
             }.onFailure {t ->
                 withContext(Dispatchers.Main){
                     progressBar.visibility = View.GONE
-                    showSnackbar(t.message?: getString(R.string.error_something_went_wrong))
+                    showSnackbar(t.message ?: getString(R.string.error_something_went_wrong))
                 }
             }
         }
