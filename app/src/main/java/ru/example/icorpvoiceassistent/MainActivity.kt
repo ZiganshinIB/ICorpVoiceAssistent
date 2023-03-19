@@ -5,6 +5,7 @@ import android.media.tv.AdRequest
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Message
+import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.Display
 import android.view.Menu
@@ -35,12 +36,18 @@ class MainActivity : AppCompatActivity() {
     lateinit var waEngine: WAEngine
 
     val pods = mutableListOf<HashMap<String, String>>( )
+
+    lateinit var textToSpeech: TextToSpeech
+
+    var isTtsReady: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         initViews()
         initWolframEngine()
+        initTts()
     }
 
     fun initViews(){
@@ -68,6 +75,14 @@ class MainActivity : AppCompatActivity() {
             intArrayOf(R.id.title, R.id.content)
         )
         podsList.adapter = podsAdapter
+        podsList.setOnItemClickListener{ parent, view, position, id ->
+            if (isTtsReady){
+                val title = pods[position]["Title"]
+                val content = pods[position]["Content"]
+                textToSpeech.speak(content, TextToSpeech.QUEUE_FLUSH, null, title)
+
+            }
+        }
 
         val voiceInputButton: FloatingActionButton = findViewById(R.id.voice_input_button)
         voiceInputButton.setOnClickListener {
@@ -86,7 +101,9 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.action_stop -> {
-                Log.d(TAG, "action_stop")
+                if (isTtsReady){
+                    textToSpeech.stop()
+                }
                 return true
             }
             R.id.action_clear -> {
@@ -157,5 +174,16 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+    fun initTts(){
+        textToSpeech = TextToSpeech(this){ code ->
+            if (code != TextToSpeech.SUCCESS){
+                Log.e(TAG,"TTS error code: $code")
+                showSnackbar(getString(R.string.error_tts_is_not_ready))
+            } else {
+                isTtsReady = true
+            }
+        }
+        textToSpeech.language = Locale.US
     }
 }
